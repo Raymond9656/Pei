@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>給沛汶的小小問卷</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      font-family: "Helvetica Neue", Arial, sans-serif;
+      background: linear-gradient(135deg, #f0f4f8, #d0e4ff);
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+    .container {
+      background: #fff;
+      width: 90%;
+      max-width: 420px;
+      padding: 30px 25px;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+      text-align: center;
+    }
+    h2 { color: #333; margin-bottom: 20px; font-size: 1.6em; }
+    p { font-size: 16px; margin: 20px 0 10px; color: #555; }
+    label {
+      display: inline-flex; align-items: center; margin: 8px 10px;
+      font-size: 16px; cursor: pointer; padding: 8px 12px;
+      border-radius: 8px; transition: background 0.3s;
+    }
+    label:hover { background: #f0f4f8; }
+    input[type="radio"] { margin-right: 8px; width: 18px; height: 18px; accent-color: #2196f3; }
+    input[type="text"] { width: 100%; padding: 10px; margin-top: 5px; border-radius: 8px; border: 1px solid #ccc; font-size: 16px; }
+    button {
+      margin-top: 25px; padding: 15px 30px; font-size: 18px;
+      border: none; border-radius: 12px; background: #2196f3; color: white;
+      cursor: pointer; transition: background 0.3s; width: 100%;
+    }
+    button:hover { background: #1976d2; }
+    .footer { margin-top: 15px; font-size: 13px; color: #777; }
+    @media (max-width: 360px) {
+      h2 { font-size: 1.5em; }
+      p, label { font-size: 14px; }
+      button { font-size: 16px; padding: 12px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>𝓡𝓪𝔂𝓶𝓸𝓷𝓭 𝓪𝓷𝓭 𝓝𝓪𝓷𝓬𝔂 𝓺𝓾𝓲𝔃 🐇</h2>
+
+    <form id="myForm" method="POST" action="https://formspree.io/f/myzdqpvj">
+      <p>1. 願意和我當朋友或是講講話嗎？</p>
+      <label><input type="radio" name="friend" value="Yes" required> Yes</label>
+      <label><input type="radio" name="friend" value="No"> No</label>
+
+      <p>2. 想知道現在的你還是單身嗎？</p>
+      <label><input type="radio" name="single" value="Yes" required> Yes</label>
+      <label><input type="radio" name="single" value="No"> No</label>
+
+      <p>3. 想和我說的話</p>
+      <input type="text" name="message" placeholder="寫下你的話…">
+
+      <button type="submit">送出</button>
+    </form>
+
+    <div class="footer">希望你和我或是我們未來的日子可以好好的 有好多事情想和你說</div>
+  </div>
+
+  <script>
+    const form = document.getElementById("myForm");
+
+    form.addEventListener("submit", function(e){
+      e.preventDefault();
+
+      const friend = form.elements["friend"].value;
+      const single = form.elements["single"].value;
+
+      // 移除舊訊息（避免重複顯示）
+      const oldMsg = document.querySelector(".thankyou");
+      if(oldMsg) oldMsg.remove();
+        const container = document.querySelector(".container");
+        const msg = document.createElement("div");
+        msg.classList.add("thankyou");
+        msg.innerHTML = `
+          <h3 style="color:#444;">💌 謝謝你的回覆</h3>
+          <p style="font-size:15px; color:#555;">
+            如果你願意，能和我保持聯絡嗎？
+          </p>
+          <a href="https://www.instagram.com/raymond._9656" target="_blank" 
+            style="display:inline-block; margin:6px; padding:10px 18px; background:#fce4ec; color:#c2185b; border-radius:12px; text-decoration:none; font-weight:bold;">
+            Instagram
+          </a>
+          <a href="https://line.me/ti/p/raymond0319" target="_blank" 
+            style="display:inline-block; margin:6px; padding:10px 18px; background:#e3f2fd; color:#1976d2; border-radius:12px; text-decoration:none; font-weight:bold;">
+            LINE
+          </a>
+        `;
+        msg.style.marginTop = "20px";
+        msg.style.padding = "20px";
+        msg.style.background = "#fafafa";
+        msg.style.border = "1px solid #eee";
+        msg.style.borderRadius = "15px";
+        msg.style.boxShadow = "0 4px 12px rgba(0,0,0,0.08)";
+        container.appendChild(msg);
+
+      // 送資料到 Formspree
+      fetch(form.action, {
+        method: form.method,
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      }).then(() => {
+        form.reset();
+      });
+    });
+  </script>
+
+</body>
+</html>
