@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>我的小小問卷</title>
+  <style>
+    /* 全域設定 */
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      font-family: "Helvetica Neue", Arial, sans-serif;
+      background: linear-gradient(135deg, #f0f4f8, #d0e4ff);
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    /* 表單容器 */
+    .container {
+      background: #fff;
+      width: 90%;
+      max-width: 420px;
+      padding: 30px 25px;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+      text-align: center;
+    }
+
+    h2 {
+      color: #333;
+      margin-bottom: 20px;
+      font-size: 1.8em;
+    }
+
+    p {
+      font-size: 16px;
+      margin: 20px 0 10px;
+      color: #555;
+    }
+
+    /* 單選框樣式 */
+    label {
+      display: inline-flex;
+      align-items: center;
+      margin: 8px 10px;
+      font-size: 16px;
+      cursor: pointer;
+      padding: 8px 12px;
+      border-radius: 8px;
+      transition: background 0.3s;
+    }
+
+    label:hover {
+      background: #f0f4f8;
+    }
+
+    input[type="radio"] {
+      margin-right: 8px;
+      width: 18px;
+      height: 18px;
+      accent-color: #2196f3; /* 改變選中顏色 */
+    }
+
+    /* 送出按鈕 */
+    button {
+      margin-top: 25px;
+      padding: 15px 30px;
+      font-size: 18px;
+      border: none;
+      border-radius: 12px;
+      background: #2196f3;
+      color: white;
+      cursor: pointer;
+      transition: background 0.3s;
+      width: 100%;
+    }
+
+    button:hover {
+      background: #1976d2;
+    }
+
+    /* footer 說明文字 */
+    .footer {
+      margin-top: 15px;
+      font-size: 13px;
+      color: #777;
+    }
+
+    /* 手機小螢幕調整 */
+    @media (max-width: 360px) {
+      h2 { font-size: 1.5em; }
+      p, label { font-size: 14px; }
+      button { font-size: 16px; padding: 12px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>我的小小問卷 🙏</h2>
+
+    <form method="POST" action="https://wannabeapartofnancy.com">
+      <p>1. 願意和我重新當朋友嗎？</p>
+      <label><input type="radio" name="friend" value="Yes" required> Yes</label>
+      <label><input type="radio" name="friend" value="No"> No</label>
+
+      <p>2. 你現在是否單身，能不能給我一個機會？</p>
+      <label><input type="radio" name="single" value="Yes" required> Yes</label>
+      <label><input type="radio" name="single" value="No"> No</label>
+
+      <button type="submit">送出回覆</button>
+    </form>
+
+    <div class="footer">你的回答會寄到我的信箱</div>
+  </div>
+</body>
+</html>
