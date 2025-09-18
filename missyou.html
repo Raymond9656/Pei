@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>給沛汶的小小問卷</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      font-family: "Helvetica Neue", Arial, sans-serif;
+      background: linear-gradient(135deg, #f0f4f8, #d0e4ff);
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+    .container {
+      background: #fff;
+      width: 90%;
+      max-width: 420px;
+      padding: 30px 25px;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+      text-align: center;
+    }
+    h2 { color: #333; margin-bottom: 20px; font-size: 1.6em; }
+    p { font-size: 16px; margin: 20px 0 10px; color: #555; }
+    label {
+      display: inline-flex; align-items: center; margin: 8px 10px;
+      font-size: 16px; cursor: pointer; padding: 8px 12px;
+      border-radius: 8px; transition: background 0.3s;
+    }
+    label:hover { background: #f0f4f8; }
+    input[type="radio"] { margin-right: 8px; width: 18px; height: 18px; accent-color: #2196f3; }
+    input[type="text"] { width: 100%; padding: 10px; margin-top: 5px; border-radius: 8px; border: 1px solid #ccc; font-size: 16px; }
+    button {
+      margin-top: 25px; padding: 15px 30px; font-size: 18px;
+      border: none; border-radius: 12px; background: #2196f3; color: white;
+      cursor: pointer; transition: background 0.3s; width: 100%;
+    }
+    button:hover { background: #1976d2; }
+    .footer { margin-top: 15px; font-size: 13px; color: #777; }
+    @media (max-width: 360px) {
+      h2 { font-size: 1.5em; }
+      p, label { font-size: 14px; }
+      button { font-size: 16px; padding: 12px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>我的小小問卷</h2>
+
+    <form id="myForm" method="POST" action="https://formspree.io/f/myzdqpvj">
+      <p>1. 願意和我當朋友或是講講話嗎？</p>
+      <label><input type="radio" name="friend" value="Yes" required> Yes</label>
+      <label><input type="radio" name="friend" value="No"> No</label>
+
+      <p>2. 可以知道現在的你還是單身嗎？</p>
+      <label><input type="radio" name="single" value="Yes" required> Yes</label>
+      <label><input type="radio" name="single" value="No"> No</label>
+
+      <p>3. 想和我說的話（可以空白）</p>
+      <input type="text" name="message" placeholder="寫下你的話…">
+
+      <button type="submit">送出</button>
+    </form>
+
+    <div class="footer">希望你和我或是我們未來的日子可以好好的</div>
+  </div>
+
+  <script>
+    const form = document.getElementById("myForm");
+    form.addEventListener("submit", function(e){
+      // 檢查是否有選 Yes
+      const friend = form.elements["friend"].value;
+      const single = form.elements["single"].value;
+      if(friend === "Yes" || single === "Yes"){
+        setTimeout(() => {
+          alert("可以和我聯絡嗎？\nIG: https://www.instagram.com/你的帳號\nLINE: https://line.me/ti/p/你的帳號");
+        }, 500); // 延遲讓表單先送出
+      }
+    });
+  </script>
+</body>
+</html>
