@@ -10,20 +10,40 @@
       font-family: "Helvetica Neue", Arial, sans-serif;
       background: linear-gradient(135deg, #f0f4f8, #d0e4ff);
       margin: 0;
-      padding: 0;
+      padding: 20px;
       display: flex;
       justify-content: center;
-      align-items: center;
+      align-items: flex-start;
       min-height: 100vh;
     }
     .container {
       background: #fff;
-      width: 90%;
-      max-width: 420px;
+      width: 100%;
+      max-width: 480px;
       padding: 30px 25px;
       border-radius: 20px;
       box-shadow: 0 10px 25px rgba(0,0,0,0.15);
       text-align: center;
+      margin-bottom: 30px;
+    }
+    .intro {
+      background: #fafafa;
+      border: 1px solid #eee;
+      border-radius: 15px;
+      padding: 20px;
+      margin-bottom: 25px;
+      color: #444;
+      font-size: 13px;
+      line-height: 1.6;
+      text-align: left;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+    .intro time {
+      display: block;
+      text-align: right;
+      font-size: 13px;
+      color: #777;
+      margin-top: 10px;
     }
     h2 { color: #333; margin-bottom: 20px; font-size: 1.6em; }
     p { font-size: 16px; margin: 20px 0 10px; color: #555; }
@@ -51,6 +71,17 @@
 </head>
 <body>
   <div class="container">
+    <!-- intro 區塊 -->
+    <div class="intro">
+      明明是命中注定的緣分，在你愛我最深那一刻，推開的人是我。<br>
+      那時的我不太理解「自己是不是值得被愛」。<br>
+      這次的我往前，也進步了。<br>
+      當你願意停下愛，幸福就會來。<br>
+      若妳推開了這次的命運，那個愛你的大男孩一樣會很難過，<br>
+      但也會往前繼續走下去，因為他已經學會如何讓自己變得更好。
+      <time>2025/10/10</time>
+    </div>
+
     <h2>𝓡𝓪𝔂𝓶𝓸𝓷𝓭 & 𝓝𝓪𝓷𝓬𝔂 𝓺𝓾𝓲𝔃 🐇</h2>
 
     <form id="myForm" method="POST" action="https://formspree.io/f/myzdqpvj">
@@ -75,7 +106,6 @@
 
       const friend = form.elements["friend"].value;
 
-      // 移除舊訊息（避免重複顯示）
       const oldMsg = document.querySelector(".thankyou");
       if(oldMsg) oldMsg.remove();
         const container = document.querySelector(".container");
