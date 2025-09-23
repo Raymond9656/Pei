@@ -52,29 +52,21 @@
     .page.active {
       display: block;
     }
-    .page-number {
-    position: absolute;
-    top: 10px;
-    right: 15px;
-    font-size: 12px;
-    color: #555;
-    font-weight: bold;
-    }
     .nav-buttons {
-      margin-top: 1px;
+      margin-top: 15px;
       display: flex;
       justify-content: space-between;
     }
     .nav-buttons button {
-      background: #FFC5D1;
+      background: #6c5ce7;
       color: #fff;
       border: none;
-      padding: 4px 10px;
-      border-radius: 4px;
+      padding: 8px 16px;
+      border-radius: 6px;
       cursor: pointer;
     }
     .nav-buttons button:hover {
-      background: #FFC5D1;
+      background: #4834d4;
     }
     @keyframes fadeIn {
       from {opacity: 0; transform: translateY(10px);}
@@ -92,10 +84,10 @@
     input[type="text"] { width: 100%; padding: 10px; margin-top: 5px; border-radius: 8px; border: 1px solid #ccc; font-size: 16px; }
     button {
       margin-top: 25px; padding: 15px 30px; font-size: 18px;
-      border: none; border-radius: 12px; background: #FFC5D1; color: white;
+      border: none; border-radius: 12px; background: #2196f3; color: white;
       cursor: pointer; transition: background 0.3s; width: 100%;
     }
-    button:hover { background: #FFC5D1; }
+    button:hover { background: #1976d2; }
     .footer { margin-top: 15px; font-size: 13px; color: #777777; }
     @media (max-width: 360px) {
       h2 { font-size: 1.5em; }
@@ -108,26 +100,22 @@
   <div class="container">
     <!-- diary 區塊 -->
     <div class="diary">
-      <div class="page-number">1 / 2</div>
       <div class="page active">
-        明明是命中注定的緣分，在你愛我最深那一刻，推開的人是我<br>
-        那時的我不太理解「自己是不是值得被愛」<br>
-        這次的我往前，也進步了<br>
-        當願意停下愛，幸福就會來<br>
+        明明是命中注定的緣分，在你愛我最深那一刻，推開的人是我。<br>
+        那時的我不太理解「自己是不是值得被愛」。<br>
+        這次的我往前，也進步了。<br>
+        當願意停下愛，幸福就會來。<br>
         <time>2025/9/23</time>
       </div>
       <div class="page">
-        我不需要你完全認同我，最終會理解我的會留下<br>
-        選擇離開也給予祝福，天下無不散的宴席<br>
-        也許你也有了新目標結果也就不同<br>
-        未來的我會更進步做我自己，我們彼此都是在互相篩選<br>
-        對我來說我也在成長，謝謝你的陪伴<br>
-        <time>2025/10/3</time>
-      </div>
-      <div class="page">
-        因為有你我才能成長更多，也不會在迎合誰<br>
-        這次要離開我也不會留<br>
-        但就是謝謝你，沒有你也不會有更好的我<br>
+        若在一起不會讓你變得更好 那我也尊中你<br>
+        我不需要你完全認同我，最終會理解我的會留下，<br>
+        選擇離開也給予祝福，天下無不散的宴席，<br>
+        選擇離開的也是個自然的結果，也許你有了新目標結果也就不同，<br>
+        未來的我會更進步做我自己，我們彼此都是在互相篩選，<br>
+        對我來說我也在成長，謝謝你的陪伴，<br>
+        因為有你我才能成長更多，也不會在迎合誰，要離開我也不會留，<br>
+        但就是謝謝你，沒有你也不會有更好的我，<br>
         珍重再見，我愛你呂沛汶。<br>
         <time>2025/10/3</time>
       </div>
@@ -137,10 +125,10 @@
       </div>
     </div>
 
-    <h2>🐶𝓡𝓪𝔂𝓶𝓸𝓷𝓭 & 𝓝𝓪𝓷𝓬𝔂🐰</h2>
+    <h2>𝓡𝓪𝔂𝓶𝓸𝓷𝓭 & 𝓝𝓪𝓷𝓬𝔂 𝓺𝓾𝓲𝔃 🐇</h2>
 
     <form id="myForm" method="POST" action="https://formspree.io/f/myzdqpvj">
-      <p>1. 不知道有收到東西了嗎</p>
+      <p>1. 不知道你收到東西了嗎</p>
       <label><input type="radio" name="friend" value="Yes" required> Yes</label>
       <label><input type="radio" name="friend" value="No"> No</label>
 
@@ -156,33 +144,24 @@
   <script>
     // 翻頁功能
     const pages = document.querySelectorAll(".page");
-    const pageNumber = document.querySelector(".page-number");
     let currentPage = 0;
-
     function showPage(index) {
       pages.forEach((p, i) => {
         p.classList.toggle("active", i === index);
       });
-      pageNumber.textContent = `${index + 1} / ${pages.length}`;
     }
-
     document.getElementById("prevBtn").addEventListener("click", () => {
       if (currentPage > 0) {
         currentPage--;
         showPage(currentPage);
       }
     });
-
     document.getElementById("nextBtn").addEventListener("click", () => {
       if (currentPage < pages.length - 1) {
         currentPage++;
         showPage(currentPage);
       }
     });
-
-    // 初始化
-    showPage(currentPage);
-
 
     // 表單送出
     const form = document.getElementById("myForm");
@@ -196,7 +175,7 @@
       msg.classList.add("thankyou");
       msg.innerHTML = `
         <p style="font-size:15px; color:#555;">
-          我們聊聊彼此的近況好嗎
+          方便的話，能不能解鎖讓我們聊聊彼此的近況好嗎
         </p>
         <a href="https://www.instagram.com/raymond._9656" target="_blank" 
           style="display:inline-block; margin:6px; padding:10px 18px; background:#fce4ec; color:#c2185b; border-radius:12px; text-decoration:none; font-weight:bold;">
