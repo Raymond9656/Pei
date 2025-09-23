@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>☺︎</title>
+  <title>小小問卷</title>
   <style>
     * { box-sizing: border-box; }
     body {
@@ -27,9 +27,10 @@
       margin-bottom: 30px;
     }
     .diary {
-      max-width: 1000px;
+      width: 400px;       /* 固定寬度 */
+      height: 250px;      /* 固定高度 */
       margin: 40px auto;
-      padding: 20px 20px;
+      padding: 20px;
       background: rgba(255, 255, 255, 0.8);
       border-radius: 6px;
       box-shadow: 0 8px 20px rgba(0,0,0,0.12);
@@ -37,6 +38,7 @@
       line-height: 1.6em;
       color: #333;
       position: relative;
+      overflow-y: auto;   /* 高度超出可以滾動，但用戶手動滾動 */
     }
     .diary time {
       display: block;
@@ -46,7 +48,8 @@
       margin-top: 10px;
     }
     .page {
-      display: none;
+      display: none; 
+      white-space: normal;   /* 自動換行 */
       animation: fadeIn 0.6s ease;
     }
     .page.active {
