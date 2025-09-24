@@ -27,7 +27,7 @@
       margin-bottom: 30px;
     }
     .diary {
-      width: 400px;       /* 固定寬度 */
+      width: 100%;        /* 改成手機寬度自適應 */
       height: 250px;      /* 固定高度 */
       margin: 40px auto;
       padding: 20px;
@@ -83,6 +83,17 @@
       from {opacity: 0; transform: translateY(10px);}
       to {opacity: 1; transform: translateY(0);}
     }
+    textarea {
+      width: 100%;
+      min-height: 80px;      /* 給一點高度，避免太扁 */
+      max-height: 200px;     /* 最多 200px */
+      padding: 10px;
+      margin-top: 5px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+      overflow-y: auto;      /* 超過高度時出現滾動條 */
+    }
     h2 { color: #333; margin-bottom: 20px; font-size: 1.2em; }
     p { font-size: 16px; margin: 20px 0 10px; color: #555; }
     label {
@@ -135,8 +146,8 @@
         <time>2025/10/3</time>
       </div>
       <div class="nav-buttons">
-        <button id="prevBtn">⬅ 上一頁</button>
-        <button id="nextBtn">下一頁 ➡</button>
+        <button id="prevBtn">上一頁</button>
+        <button id="nextBtn">下一頁</button>
       </div>
     </div>
 
@@ -148,7 +159,7 @@
       <label><input type="radio" name="friend" value="No"> No</label>
 
       <p>2. 想和我說的話</p>
-      <input type="text" name="message" placeholder="寫下你的話…">
+      <textarea name="message" placeholder="寫下你的話…"></textarea>
 
       <button type="submit">送出</button>
     </form>
