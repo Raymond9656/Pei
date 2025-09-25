@@ -121,6 +121,13 @@
 <body>
   <div class="container">
     <!-- diary 區塊 -->
+
+<div id="locked">
+  <button onclick="unlockDiary()">點一下</button>
+</div>
+
+<div class="intro" id="intro" style="display:none;">
+  <!-- diary 內容放這裡 -->
     <div class="diary">
       <div class="page-number">1 / 2</div>
       <div class="page active">
@@ -150,6 +157,7 @@
         <button id="nextBtn">下一頁</button>
       </div>
     </div>
+</div>
 
     <h2>🐶𝓡𝓪𝔂𝓶𝓸𝓷𝓭 & 𝓝𝓪𝓷𝓬𝔂🐰</h2>
 
@@ -172,7 +180,10 @@
     const pages = document.querySelectorAll(".page");
     const pageNumber = document.querySelector(".page-number");
     let currentPage = 0;
-
+    function unlockDiary() {
+      document.getElementById("locked").style.display = "none";
+      document.getElementById("intro").style.display = "block";
+    }
     function showPage(index) {
       pages.forEach((p, i) => {
         p.classList.toggle("active", i === index);
