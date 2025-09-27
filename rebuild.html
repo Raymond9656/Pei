@@ -134,6 +134,9 @@
     <div class="diary">
       <div class="page-number">1 / 2</div>
       <div class="page active">
+        有些想和你說的話都在這，希望繼續往下看
+      </div>
+      <div class="page">
         在跟你說一聲不好意思<br>
         在你完成小小夢想的同時<br>
         我不斷打擾你，讓你不太舒服<br>
@@ -144,7 +147,7 @@
       <div class="page">
         明明是命中注定的緣分<br>
         在你愛我最深那一刻，推開的人是我<br>
-        那時的我不太理解「自己是不是值得被愛<br>
+        那時的我不太理解「自己是不是值得被愛」<br>
         這次我往前，也進步了<br>
         比起追求愛情，更像想追求幸福<br>
         當願意停下愛，幸福就會來<br>
@@ -154,15 +157,15 @@
         不需要你完全認同我，會理解的會留下<br>
         選擇離開也給予祝福，天下無不散的宴席<br>
         也許去了美國你有了新目標結果也就不同<br>
-        未來的我會更進步做我自己，我們彼此都是在互相篩選<br>
+        未來我會更進步做我自己，我們彼此都是在互相篩選<br>
         對我來說我也在成長，謝謝你的陪伴<br>
         <time>2025/9/28</time>
       </div>
       <div class="page">
         因為有你我才能成長更多，也不會在迎合誰<br>
-        這次要離開我也不會留<br>
+        這次要離開我也不會強留<br>
         但就是謝謝你，沒有你也不會有更好的我<br>
-        愛你沛汶。<br>
+        愛你沛汶<br>
         <time>2025/9/28</time>
       </div>
       <div class="nav-buttons">
@@ -176,15 +179,25 @@
 
     <form id="myForm" method="POST" action="https://formspree.io/f/myzdqpvj">
       <p>1. 不知道有收到東西了嗎</p>
-      <label><input type="radio" name="friend" value="Yes" required> Yes</label>
-      <label><input type="radio" name="friend" value="No"> No</label>
+      <label><input type="radio" name="See" value="Yes" required> Yes</label>
+      <label><input type="radio" name="See" value="No"> No</label>
 
       <p>2. 想和我說的話</p>
       <textarea name="message" placeholder="寫下你的話…"></textarea>
 
       <button type="submit">送出</button>
     </form>
-
+    <div id="successPage" style="display:none; text-align:center;">
+      <h3 style="color:#333;">🎉 已成功送出，謝謝你！</h3>
+      <a href="https://www.instagram.com/raymond._9656" target="_blank" 
+        style="display:inline-block; margin:6px; padding:10px 18px; background:#fce4ec; color:#c2185b; border-radius:12px; text-decoration:none; font-weight:bold;">
+        Instagram
+      </a>
+      <a href="https://line.me/ti/p/~raymond0319" target="_blank" 
+        style="display:inline-block; margin:6px; padding:10px 18px; background:#e3f2fd; color:#1976d2; border-radius:12px; text-decoration:none; font-weight:bold;">
+        LINE
+      </a>
+    </div>
     <div class="footer">希望你和我或是我們未來的日子可以好好的</div>
   </div>
 
@@ -226,32 +239,12 @@
     const form = document.getElementById("myForm");
     form.addEventListener("submit", function(e){
       e.preventDefault();
-      const friend = form.elements["friend"].value;
-      const oldMsg = document.querySelector(".thankyou");
-      if(oldMsg) oldMsg.remove();
-      const container = document.querySelector(".container");
-      const msg = document.createElement("div");
-      msg.classList.add("thankyou");
-      msg.innerHTML = `
-        <p style="font-size:15px; color:#555;">
-          我們聊聊彼此的近況好嗎
-        </p>
-        <a href="https://www.instagram.com/raymond._9656" target="_blank" 
-          style="display:inline-block; margin:6px; padding:10px 18px; background:#fce4ec; color:#c2185b; border-radius:12px; text-decoration:none; font-weight:bold;">
-          Instagram
-        </a>
-        <a href="https://line.me/ti/p/~raymond0319" target="_blank" 
-          style="display:inline-block; margin:6px; padding:10px 18px; background:#e3f2fd; color:#1976d2; border-radius:12px; text-decoration:none; font-weight:bold;">
-          LINE
-        </a>
-      `;
-      msg.style.marginTop = "20px";
-      msg.style.padding = "20px";
-      msg.style.background = "#fafafa";
-      msg.style.border = "1px solid #eee";
-      msg.style.borderRadius = "15px";
-      msg.style.boxShadow = "0 4px 12px rgba(0,0,0,0.08)";
-      container.appendChild(msg);
+
+      // 隱藏表單
+      form.style.display = "none";
+
+      // 顯示成功畫面
+      document.getElementById("successPage").style.display = "block";
 
       // 傳資料到 Formspree
       fetch(form.action, {
